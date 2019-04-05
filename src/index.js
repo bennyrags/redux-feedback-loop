@@ -7,10 +7,14 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
+const reducer1 = (state=[], action) => {
+ console.log(`This is router1 and this is state:`, state);
+return state;
+}
 
 const storeInstance = createStore(
     combineReducers({
-
+        reducer1
     })
 );
 
