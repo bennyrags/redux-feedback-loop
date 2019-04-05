@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-class HowFeelingToday extends Component {
+class Supported extends Component {
     render() {
         return(
             <section>
                 <h1>
-                    How Are You Feeling Today?
+                    Are You feeling supported today
                 </h1>
                 <label>Feeling?</label>
                 <input type="number"/>
@@ -17,4 +17,4 @@ class HowFeelingToday extends Component {
     }
 }
 
-export default HowFeelingToday;
+export default Supported;
