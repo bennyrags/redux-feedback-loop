@@ -25,18 +25,18 @@ submitFeedback = (e) => {
 let feedbackData = this.props.reduxState.reducer1
 console.log(`feedback data in submitFeedback (should be compl reducer1 obj)`, feedbackData);
 
-// axios({
-//   method: "post",
-//   url: "/feedback",
-//   data: "hello",
-// })
-// .then(response=>{
-// console.log(`Response from submitFeedback post req,`, response)
-// })
-// .catch(error=>{
-//   alert(`There was an error submitting your feedback. Please try again later.`)
-//   console.log(`Error from submitFeedback post req,`, error)
-// })
+axios({
+  method: "post",
+  url: "/feedback",
+  data: feedbackData,
+})
+.then(response=>{
+console.log(`Response from submitFeedback post req,`, response)
+})
+.catch(error=>{
+  alert(`There was an error submitting your feedback. Please try again later.`)
+  console.log(`Error from submitFeedback post req,`, error)
+})
   }
 
 
