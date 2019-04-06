@@ -22,4 +22,10 @@ class ReviewFeedback extends Component {
 
 
 
-export default ReviewFeedback;
+const mapReduxStateToProps = reduxState => ({
+    reduxState
+    });
+    
+    export default connect(mapReduxStateToProps)(ReviewFeedback);
+
+
