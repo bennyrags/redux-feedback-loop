@@ -20,6 +20,8 @@ class ReviewFeedback extends Component {
             <h3>Comments: {this.props.reduxState.reducer1.comments}</h3>
             
             <button  disabled>Incomplete</button>
+
+            <button id='submit' onClick={this.props.submitFeedback}></button>
             </section>
 
         )
