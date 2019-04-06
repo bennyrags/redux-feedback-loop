@@ -9,7 +9,7 @@ class HowFeelingToday extends Component {
     handleClick = (e) => {
         console.log(`this is state from how feeling handleClick`, this.state);
         this.props.dispatch({type: 'HOW_FEELING_TODAY', payload: this.state.feeling});
-
+        this.props.history.push(`/understanding`);
     }
 
     handleChange = (e) => {

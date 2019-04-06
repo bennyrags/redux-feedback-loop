@@ -1,17 +1,35 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 class Supported extends Component {
-    render() {
+
+    state = {
+        supported: ''
+    }
+
+    handleClick = (e) => {
+        console.log(`this is state from  supported handleClick`, this.state);
+        this.props.dispatch({type: 'SUPPORTED', payload: this.state.supported});
+        this.props.history.push(`/comments`);
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            supported: e.target.value,
+        })
+        console.log(`this is state from  supported handleChange`, this.state);
+
+    }
+        render() {
         return(
             <section>
                 <h1>
                     Are You feeling supported today
                 </h1>
-                <label>Feeling?</label>
-                <input type="number"/>
+                <label>Supported?</label>
+                <input type="number" onChange={this.handleChange} value={this.state.supported}/>
  
- {/* need to set up next button so it goes to next view and adds the input value to reduxState */}
-                <button>Next</button>
+                <button onClick={this.handleClick}>Next</button>
             </section>
         )
     }

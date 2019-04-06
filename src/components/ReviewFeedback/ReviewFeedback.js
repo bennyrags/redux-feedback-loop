@@ -12,7 +12,7 @@ class ReviewFeedback extends Component {
 
             <h3>Feelings: {this.props.reduxState.reducer1.feelings}</h3>
             <h3>Understanding: {this.props.reduxState.reducer1.understanding}</h3>
-            <h3>Support: {this.props.reduxState.reducer1.support}</h3>
+            <h3>Support: {this.props.reduxState.reducer1.supported}</h3>
             <h3>Comments: {this.props.reduxState.reducer1.comments}</h3>
             
             <button>Incomplete</button>
