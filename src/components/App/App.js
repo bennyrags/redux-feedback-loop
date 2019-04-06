@@ -16,8 +16,6 @@ import ThankYou from '../ThankYou/ThankYou';
 
 class App extends Component {
 
-
-
   submitFeedback = (e) => {
     //this funct needs to use axios to POST the finished obj
     //via Redux I think?
@@ -37,7 +35,10 @@ class App extends Component {
         //Error from submitFeedback post req, TypeError: Cannot read property 'push' of undefined
         //what if I move from then to afte axios
         console.log(`Response from submitFeedback post req,`, response);
-        //this.props.history.push('/ThankYou')
+        //redirect the ol fashion way AFTER func
+        window.location.href = '#/ThankYou';
+
+
       })
       .catch(error => {
         alert(`There was an error submitting your feedback. Please try again later.`)
@@ -45,7 +46,7 @@ class App extends Component {
       })
       //See above error. I get it when I move this to the end of the function
       //perhaps I have to move it back to the component? can i call a func here that rests in component?
-      this.props.history.push('/ThankYou')
+      //this.props.history.push('/ThankYou')
     }
 
 
