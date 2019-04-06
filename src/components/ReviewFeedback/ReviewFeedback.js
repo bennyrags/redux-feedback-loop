@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-
+import './ReviewFeedback.css'
 class ReviewFeedback extends Component {
 
     render() {
+        
         return(
             <section>
             <h2>
@@ -15,7 +16,7 @@ class ReviewFeedback extends Component {
             <h3>Support: {this.props.reduxState.reducer1.supported}</h3>
             <h3>Comments: {this.props.reduxState.reducer1.comments}</h3>
             
-            <button>Incomplete</button>
+            <button id='submit' disabled>Incomplete</button>
             </section>
 
         )

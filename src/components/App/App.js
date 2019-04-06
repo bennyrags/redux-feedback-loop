@@ -20,8 +20,12 @@ class App extends Component {
           <Route path='/understanding' component={Understanding} />
           <Route path='/supported' component={Supported} />
           <Route path='/comments' component={Comments} />
+          <Route path='/ReviewFeedback' component={ReviewFeedback} />
+
+
+
         </Router>
-        <ReviewFeedback />
+        {/* <ReviewFeedback /> */}
       </div>
     );
   }

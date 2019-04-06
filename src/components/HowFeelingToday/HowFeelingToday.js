@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
+
 class HowFeelingToday extends Component {
 
     state = {
@@ -31,6 +33,7 @@ class HowFeelingToday extends Component {
  
  {/* need to set up next button so it goes to next view and adds the input value to reduxState */}
                 <button onClick={this.handleClick}>Next</button>
+            <ReviewFeedback />
             </section>
         )
     }

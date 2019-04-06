@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
+
 
 class Supported extends Component {
 
@@ -30,6 +32,7 @@ class Supported extends Component {
                 <input type="number" onChange={this.handleChange} value={this.state.supported}/>
  
                 <button onClick={this.handleClick}>Next</button>
+                <ReviewFeedback />
             </section>
         )
     }
