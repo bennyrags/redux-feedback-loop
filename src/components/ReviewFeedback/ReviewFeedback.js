@@ -15,6 +15,10 @@ class ReviewFeedback extends Component {
 
     //ok so how do we change the button? let's start with that
 
+    //i made this if statement based on the path of the window. this may not be best solution. it would have to be changed if the route changed or possibly when it goes out to the web.
+
+    //also have to make sure you can't submit if any of the fields are blank>
+
     changeButton = () => {
         console.log(`changeButton func fired on componentDidMount`);
         let submitButton = document.getElementById('submit');
@@ -27,7 +31,7 @@ class ReviewFeedback extends Component {
             submitButton.innerHTML='Incomplete'
     }       
         else {
-            
+            return
         }
     }
 
