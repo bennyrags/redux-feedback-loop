@@ -1,9 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class ThankYou extends Component {
 
-returnHome = (e) => {
+state = {
+    resetFeedback: {
+        feeling:'',
+        understanding:'',
+        support:'',
+        comments: '',
+    }
+}
 
+
+returnHome = (e) => {
+    this.props.dispatch({type: 'RESET', payload: this.state.resetFeedback});
     this.props.history.push('/');
 }
 
@@ -19,5 +30,8 @@ render(){
 
 }
 
+const mapReduxStateToProps = reduxState => ({
+    reduxState
+})
 
-export default ThankYou;
+export default connect(mapReduxStateToProps)(ThankYou);
