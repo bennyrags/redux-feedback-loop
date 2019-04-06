@@ -21,7 +21,7 @@ class ReviewFeedback extends Component {
             
             <button  disabled>Incomplete</button>
 
-            <button id='submit' onClick={this.props.submitFeedback}></button>
+            <button id='submit' onClick={this.props.submitFeedback}>Submit Feedback</button>
             </section>
 
         )
