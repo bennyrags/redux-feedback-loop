@@ -49,6 +49,14 @@ else if (action.type === 'COMMENTS') {
     }
 }
 
+else if (action.type === 'RESET')
+    return {
+        feelings: action.payload.feelings,
+        understanding: action.payload.understanding,
+        supported: action.payload.supported,
+        comments: action.payload.comments,
+    }
+
 return state;
 }
 

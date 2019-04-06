@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import './ReviewFeedback.css'
 class ReviewFeedback extends Component {
 
+state = {
+    clicked:false,
+}
 
     //need to make a func that looks to make sure all fields are complete
     //enables button
@@ -29,17 +32,40 @@ class ReviewFeedback extends Component {
         if (hash !== '#/ReviewFeedback') {
             submitButton.setAttribute('disabled', 'true');
             submitButton.innerHTML='Incomplete'
-    }       
+        }       
         else {
             return
         }
+    //    submitButton.addEventListener('click', () => {
+    //     this.setState({
+    //         clicked:true
+    //     })           
+    //     console.log(`This is state after click event listener added to submit button:`, this.state
+    //     )
+
+    }
+
+    
+
+    goToThankYou = () => {
+        
+        this.props.history.push('/ThankYou')
+        // if ( this.state.clicked === true) {
+        // this.props.history.push('/ThankYou')
+        // }
     }
 
     componentDidMount() {
-        this.changeButton()
-
+        this.changeButton(); 
+    
     }
 
+    componentDidUpdate() {
+        if (this.state.clicked === true) {
+            this.goToThankYou();
+        }
+        // this.goToThankyou();
+    }
 
     render() {
         
@@ -56,8 +82,6 @@ class ReviewFeedback extends Component {
             
             <button id='submit'  onClick={this.props.submitFeedback} >Submit Feedback</button>
 
-            {/* <button id='submit' onClick={this.props.submitFeedback}>Submit Feedback</button>
-            </section> */}
     </section>
         )
     }
