@@ -36,7 +36,7 @@ class ReviewFeedback extends Component {
     }
 
     componentDidMount() {
-        this.changeButton()
+        this.changeButton() 
 
     }
 
