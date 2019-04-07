@@ -26,5 +26,18 @@ console.log(`Result in post submission`, result);
 
 })
 
+router.delete('/:id', (req, res) => {
+    let sqlText = `DELETE FROM "feedback" WHERE "id"=$1`
+    pool.query(sqlText, [req.params.id])
+    .then(response => {
+        res.sendStatus(200);
+    })
+    .catch(error =>{
+        res.sendStatus(500);
+        console.log(`Error deleting event. Here's the error:`, error);
+        
+    })
+})
+
 
 module.exports = router;

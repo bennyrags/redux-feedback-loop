@@ -59,7 +59,15 @@ class App extends Component {
       method:'DELETE',
       url: `/feedback/${id}`
     })
-    
+    .then(response => {
+console.log(`Response after deleting feedback`, response);
+this.getFeedBack();
+
+    }) 
+    .catch(error => {
+      console.log(`Error deleting feedback:`, error);
+      
+    })
   }
 
 componentDidMount() {
