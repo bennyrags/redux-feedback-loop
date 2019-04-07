@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 
 class Admin extends Component {
 
-componentDidMount() {
-    //get will get called here
-    this.props.getFeedback();
+handleDelete = (id) => {
+console.log(`item id`, id);
+
+window.confirm('Are You Sure You want to delete?') && this.props.delete(id);
 }
 
     render() {
@@ -23,7 +24,15 @@ componentDidMount() {
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        {this.props.reduxState.adminReducer.map((item) => 
+                            <tr key={item.id}>
+                                <td>{item.feeling}</td>
+                                <td>{item.understanding}</td>
+                                <td>{item.support}</td>
+                                <td>{item.comments}</td>
+                                <td><button onClick={()=> this.handleDelete(item.id)}>delete</button></td>
+                            </tr>
+                            )}
                     </tbody>
                 </table>
             </section>

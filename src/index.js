@@ -58,9 +58,18 @@ const reducer1 = (state = studentInfo, action) => {
     return state;
 }
 
+const adminReducer = (state =[], action) => {
+if (action.type === 'ADMIN_GET') {
+    return action.payload;
+}
+
+    return state;
+}
+
 const storeInstance = createStore(
     combineReducers({
-        reducer1
+        reducer1,
+        adminReducer
     }),
     applyMiddleware(logger),
 );
