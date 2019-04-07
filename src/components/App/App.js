@@ -11,7 +11,7 @@ import Understanding from '../Understanding/Understanding';
 import Supported from '../Supported/Supported';
 import Comments from '../Comments/Comments';
 import ThankYou from '../ThankYou/ThankYou';
-
+import Admin from '../Admin/Admin'
 
 
 class App extends Component {
@@ -34,6 +34,22 @@ class App extends Component {
       })
   }
 
+  getFeedBack = () => {
+    console.log(`in getFeedback`);
+    axios({
+      method:'GET',
+      url: '/feedback'
+    })
+    .then(response => {
+      console.log('Here is response from getFeedback:', response.data)
+    })
+    .catch(error => {
+      alert(`Something went wrong when trying to get Feedback. Please try again later.`);
+      console.log(`This is the error after trying to getFeedback,`, error);
+      
+    })
+  }
+
 
   render() {
     return (
@@ -46,6 +62,7 @@ class App extends Component {
           <Route path='/comments' component={Comments} />
           <Route path='/ReviewFeedback' render={(routeProps) => <ReviewFeedback {...routeProps} submitFeedback={this.submitFeedback} />} />
           <Route path='/ThankYou' component={ThankYou} />
+          <Route path='/Admin' render={(routeProps) => <Admin {...routeProps} getFeedback={this.getFeedBack} />} />
         </Router>
       </div>
     );
