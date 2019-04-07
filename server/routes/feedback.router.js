@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 router.get('/', (req,res) => {
-    res.send('Hello from the feedback router!');
+  //  res.send('Hello from the feedback router!');
     sqlText = `SELECT * FROM feedback`
     pool.query(sqlText)
     .then(result=> {
@@ -24,6 +24,19 @@ console.log(`Result in post submission`, result);
         console.log(`Error in post submission`, error)
     })
 
+})
+
+router.delete('/:id', (req, res) => {
+    let sqlText = `DELETE FROM "feedback" WHERE "id"=$1`
+    pool.query(sqlText, [req.params.id])
+    .then(response => {
+        res.sendStatus(200);
+    })
+    .catch(error =>{
+        res.sendStatus(500);
+        console.log(`Error deleting event. Here's the error:`, error);
+        
+    })
 })
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 //views
 import Header from '../Header/Header';
@@ -11,7 +11,7 @@ import Understanding from '../Understanding/Understanding';
 import Supported from '../Supported/Supported';
 import Comments from '../Comments/Comments';
 import ThankYou from '../ThankYou/ThankYou';
-
+import Admin from '../Admin/Admin'
 
 
 class App extends Component {
@@ -34,6 +34,46 @@ class App extends Component {
       })
   }
 
+  getFeedBack = () => {
+    console.log(`in getFeedback`);
+    axios({
+      method:'GET',
+      url: '/feedback'
+    })
+    .then(response => {
+      console.log('Here is response from getFeedback:', response.data);
+      this.props.dispatch({ type: 'ADMIN_GET', payload: response.data });
+
+
+    })
+    .catch(error => {
+      alert(`Something went wrong when trying to get Feedback. Please try again later.`);
+      console.log(`This is the error after trying to getFeedback,`, error);
+      
+    })
+  }
+
+  deleteFeedback = (id) => {
+    console.log(`in deleteFeedback with item Id,`, id);
+    axios({
+      method:'DELETE',
+      url: `/feedback/${id}`
+    })
+    .then(response => {
+console.log(`Response after deleting feedback`, response);
+this.getFeedBack();
+
+    }) 
+    .catch(error => {
+      console.log(`Error deleting feedback:`, error);
+      
+    })
+  }
+
+componentDidMount() {
+  this.getFeedBack();
+}
+
 
   render() {
     return (
@@ -46,6 +86,7 @@ class App extends Component {
           <Route path='/comments' component={Comments} />
           <Route path='/ReviewFeedback' render={(routeProps) => <ReviewFeedback {...routeProps} submitFeedback={this.submitFeedback} />} />
           <Route path='/ThankYou' component={ThankYou} />
+          <Route path='/Admin' render={(routeProps) => <Admin {...routeProps} delete={this.deleteFeedback}  />} />
         </Router>
       </div>
     );
