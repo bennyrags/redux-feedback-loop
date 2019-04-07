@@ -17,12 +17,7 @@ import ThankYou from '../ThankYou/ThankYou';
 class App extends Component {
 
   submitFeedback = (e) => {
-    //this funct needs to use axios to POST the finished obj
-    //via Redux I think?
-
-    //then onClick call this func in ReviewFeedback.js
     let feedbackData = this.props.reduxState.reducer1
-    console.log(`feedback data in submitFeedback (should be compl reducer1 obj)`, feedbackData);
 
     axios({
       method: "post",
@@ -30,25 +25,14 @@ class App extends Component {
       data: feedbackData,
     })
       .then(response => {
-        //in thankYouPage branch, trying to push to thank you page after response
-        //getting this error: 
-        //Error from submitFeedback post req, TypeError: Cannot read property 'push' of undefined
-        //what if I move from then to afte axios
         console.log(`Response from submitFeedback post req,`, response);
-        //redirect the ol fashion way AFTER func
+        //redirect the old fashion way after response; this.props.history.push didnt work here
         window.location.href = '#/ThankYou';
-
-
       })
       .catch(error => {
         alert(`There was an error submitting your feedback. Please try again later.`)
-        console.log(`Error from submitFeedback post req,`, error)
       })
-      //See above error. I get it when I move this to the end of the function
-      //perhaps I have to move it back to the component? can i call a func here that rests in component?
-      //this.props.history.push('/ThankYou')
-    }
-
+  }
 
 
   render() {
@@ -63,13 +47,11 @@ class App extends Component {
           <Route path='/ReviewFeedback' render={(routeProps) => <ReviewFeedback {...routeProps} submitFeedback={this.submitFeedback} />} />
           <Route path='/ThankYou' component={ThankYou} />
         </Router>
-        {/* <ReviewFeedback /> */}
       </div>
     );
   }
 }
 
-//routes go in app js
 const mapReduxStateToProps = reduxState => ({
   reduxState
 });

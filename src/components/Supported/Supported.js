@@ -11,7 +11,7 @@ class Supported extends Component {
 
     handleClick = (e) => {
         console.log(`this is state from  supported handleClick`, this.state);
-        this.props.dispatch({type: 'SUPPORTED', payload: this.state.supported});
+        this.props.dispatch({ type: 'SUPPORTED', payload: this.state.supported });
         this.props.history.push(`/comments`);
     }
 
@@ -22,15 +22,15 @@ class Supported extends Component {
         console.log(`this is state from  supported handleChange`, this.state);
 
     }
-        render() {
-        return(
+    render() {
+        return (
             <section>
                 <h1>
                     Are You feeling supported today
                 </h1>
                 <label>Supported?</label>
-                <input type="number" onChange={this.handleChange} value={this.state.supported}/>
- 
+                <input type="number" onChange={this.handleChange} value={this.state.supported} />
+
                 <button onClick={this.handleClick}>Next</button>
                 <ReviewFeedback />
             </section>
@@ -41,6 +41,6 @@ class Supported extends Component {
 
 const mapReduxStateToProps = reduxState => ({
     reduxState
-    });
-    
-    export default connect(mapReduxStateToProps)(Supported);
+});
+
+export default connect(mapReduxStateToProps)(Supported);

@@ -3,97 +3,52 @@ import { connect } from 'react-redux';
 import './ReviewFeedback.css'
 class ReviewFeedback extends Component {
 
-state = {
-    clicked:false,
-}
-
-    //need to make a func that looks to make sure all fields are complete
-    //enables button
-    //changes text from incomplete to submit
-    //allows user to click on button to submit feedback
-
-    //OR 
-
-    //if URL has the string of the ReviewFeedback, we know the fields are filled and its time to submit
-
-    //ok so how do we change the button? let's start with that
-
-    //i made this if statement based on the path of the window. this may not be best solution. it would have to be changed if the route changed or possibly when it goes out to the web.
-
-    //also have to make sure you can't submit if any of the fields are blank>
+    state = {
+        clicked: false,
+    }
 
     changeButton = () => {
-        console.log(`changeButton func fired on componentDidMount`);
         let submitButton = document.getElementById('submit');
-        console.log(`submit button`, submitButton)
         let hash = window.location.hash;
-        console.log('window location pathname:', window.location.hash)
-        
+
         if (hash !== '#/ReviewFeedback') {
             submitButton.setAttribute('disabled', 'true');
-            submitButton.innerHTML='Incomplete'
-        }       
+            submitButton.innerHTML = 'Incomplete'
+        }
         else {
             return
         }
-    //    submitButton.addEventListener('click', () => {
-    //     this.setState({
-    //         clicked:true
-    //     })           
-    //     console.log(`This is state after click event listener added to submit button:`, this.state
-    //     )
-
-    }
-
-    
-
-    goToThankYou = () => {
-        
-        this.props.history.push('/ThankYou')
-        // if ( this.state.clicked === true) {
-        // this.props.history.push('/ThankYou')
-        // }
     }
 
     componentDidMount() {
-        this.changeButton(); 
-    
-    }
-
-    componentDidUpdate() {
-        if (this.state.clicked === true) {
-            this.goToThankYou();
-        }
-        // this.goToThankyou();
+        this.changeButton();
     }
 
     render() {
-        
-        return(
+
+        return (
             <section>
-            <h2>
-                Review Your Feedback
+                <h2>
+                    Review Your Feedback
             </h2>
 
-            <h3>Feelings: {this.props.reduxState.reducer1.feelings}</h3>
-            <h3>Understanding: {this.props.reduxState.reducer1.understanding}</h3>
-            <h3>Support: {this.props.reduxState.reducer1.supported}</h3>
-            <h3>Comments: {this.props.reduxState.reducer1.comments}</h3>
-            
-            <button id='submit'  onClick={this.props.submitFeedback} >Submit Feedback</button>
+                <h3>Feelings: {this.props.reduxState.reducer1.feelings}</h3>
+                <h3>Understanding: {this.props.reduxState.reducer1.understanding}</h3>
+                <h3>Support: {this.props.reduxState.reducer1.supported}</h3>
+                <h3>Comments: {this.props.reduxState.reducer1.comments}</h3>
 
-    </section>
+                <button id='submit' onClick={this.props.submitFeedback} >Submit Feedback</button>
+
+            </section>
         )
     }
 
 }
 
-
-
 const mapReduxStateToProps = reduxState => ({
     reduxState
-    });
-    
-    export default connect(mapReduxStateToProps)(ReviewFeedback);
+});
+
+export default connect(mapReduxStateToProps)(ReviewFeedback);
 
 

@@ -10,7 +10,7 @@ class Understanding extends Component {
 
     handleClick = (e) => {
         console.log(`this is state from  understanding  handleClick`, this.state);
-        this.props.dispatch({type: 'UNDERSTANDING', payload: this.state.understanding});
+        this.props.dispatch({ type: 'UNDERSTANDING', payload: this.state.understanding });
         this.props.history.push(`/supported`);
     }
 
@@ -23,16 +23,16 @@ class Understanding extends Component {
     }
 
     render() {
-        return(
+        return (
             <section>
                 <h1>
-                How Well Are You Understanding the Content?
+                    How Well Are You Understanding the Content?
                 </h1>
                 <label>Understanding?</label>
-                <input type="number" onChange={this.handleChange} value={this.state.understanding}/>
- 
+                <input type="number" onChange={this.handleChange} value={this.state.understanding} />
+
                 <button onClick={this.handleClick}>Next</button>
-            <ReviewFeedback />
+                <ReviewFeedback />
             </section>
         )
     }
