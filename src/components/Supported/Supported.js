@@ -16,6 +16,11 @@ class Supported extends Component {
     }
 
     handleChange = (e) => {
+        if (e.target.value > 5 || e.target.value < 0) {
+            alert('Choose a number between 1 and 5!');
+            e.target.value = 0;
+            return
+        }
         this.setState({
             supported: e.target.value,
         })

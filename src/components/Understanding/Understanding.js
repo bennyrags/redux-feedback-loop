@@ -15,6 +15,11 @@ class Understanding extends Component {
     }
 
     handleChange = (e) => {
+        if (e.target.value > 5 || e.target.value < 0) {
+            alert('Choose a number between 1 and 5!')
+            e.target.value = 0;
+            return
+        }
         this.setState({
             understanding: e.target.value,
         })
@@ -29,7 +34,7 @@ class Understanding extends Component {
                     How Well Are You Understanding the Content?
                 </h1>
                 <label>Understanding?</label>
-                <input type="number" onChange={this.handleChange} value={this.state.understanding} />
+                <input type="number"  onChange={this.handleChange} value={this.state.understanding} />
 
                 <button onClick={this.handleClick}>Next</button>
                 <ReviewFeedback />
