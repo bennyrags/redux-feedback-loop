@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
-import { withStyles } from '@material-ui/core'
+//import { withStyles } from '@material-ui/core'
 
 class Supported extends Component {
 
