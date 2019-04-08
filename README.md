@@ -1,14 +1,9 @@
-# Redux Feedback Loop
 
-**PLEASE COMMENT YOUR CODE.**
-
-### BEN R CUSTOM README.md TEXT
-
-#Feedback App 
+# Redux Feedback App 
 
 This is a full-stack feedback app for students and admins. 
 
-##Built With
+## Built With
 
 * React
 * Material-UI
@@ -18,7 +13,7 @@ This is a full-stack feedback app for students and admins.
 * PostgreSQL
 
 
-##Description
+## Description
 
 This is a feedback app that allows a user to enter feedback for a class or instructor. The app takes the user through a series of four feedback steps. The first three ask the student to enter a score between 0 and 5, with 5 being the best. The last asks for comments. 
 
