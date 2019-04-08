@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 
 class HowFeelingToday extends Component {
-
     state = {
         feeling: ''
     }
