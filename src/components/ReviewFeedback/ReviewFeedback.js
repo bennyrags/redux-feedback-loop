@@ -7,6 +7,7 @@ class ReviewFeedback extends Component {
         clicked: false,
     }
 
+    //funct to change button when the feedback is complete. since the comp is included on all the pages, i use the url to check to see if were on the review feedback page rather than another page that includes the review feedback comp
     changeButton = () => {
         let submitButton = document.getElementById('submit');
         let hash = window.location.hash;

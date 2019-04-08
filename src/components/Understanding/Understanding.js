@@ -34,7 +34,7 @@ class Understanding extends Component {
                     How Well Are You Understanding the Content?
                 </h1>
                 <label>Understanding?</label>
-                <input type="number"  onChange={this.handleChange} value={this.state.understanding} />
+                <input type="number" onChange={this.handleChange} value={this.state.understanding} />
 
                 <button onClick={this.handleClick}>Next</button>
                 <ReviewFeedback />

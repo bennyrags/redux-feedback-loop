@@ -11,7 +11,7 @@ class ThankYou extends Component {
             comments: '',
         }
     }
-
+//This pushes an empty version of the object to Redux in order to restart the feedback loop
     returnHome = (e) => {
         this.props.dispatch({ type: 'RESET', payload: this.state.resetFeedback });
         this.props.history.push('/');
