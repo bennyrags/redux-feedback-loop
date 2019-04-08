@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 
+//keep the state here
 const studentInfo = {
     feelings: '',
     understanding: '',
@@ -16,8 +17,9 @@ const studentInfo = {
     comments: '',
 }
 
+//named reducer1 right away, forgot to change until i had used it everywhere!
+//Per Mari's suggestion, i used this one reducer for all of the action types for the components
 const reducer1 = (state = studentInfo, action) => {
-    console.log(`This is router1 and this is state:`, state);
 
     if (action.type === 'HOW_FEELING_TODAY') {
         return {
@@ -58,10 +60,11 @@ const reducer1 = (state = studentInfo, action) => {
     return state;
 }
 
-const adminReducer = (state =[], action) => {
-if (action.type === 'ADMIN_GET') {
-    return action.payload;
-}
+//created a separate reducer for the admin page, since it does not interact with studentInfo
+const adminReducer = (state = [], action) => {
+    if (action.type === 'ADMIN_GET') {
+        return action.payload;
+    }
 
     return state;
 }
