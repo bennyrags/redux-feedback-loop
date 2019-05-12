@@ -1,5 +1,5 @@
 
-# Redux Feedback App 
+# Redux Feedback Loop 
 
 This is a full-stack feedback app for students and admins. 
 
