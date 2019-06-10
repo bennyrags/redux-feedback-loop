@@ -48,6 +48,8 @@ const styles = {
 };
 
 
+//The structure of this file - class, state, handle functs, and render, is repeated in the step components - understanding, supported, comments, review feedback
+
 class HowFeelingToday extends Component {
     state = {
         feeling: ''

@@ -16,6 +16,7 @@ import Admin from '../Admin/Admin'
 
 class App extends Component {
 
+  //Post funct for submitting feedback to table in db
   submitFeedback = (e) => {
     let feedbackData = this.props.reduxState.reducer1
 
@@ -26,6 +27,7 @@ class App extends Component {
     })
       .then(response => {
         console.log(`Response from submitFeedback post req,`, response);
+
         //redirect the old fashion way after response; this.props.history.push didnt work here
         window.location.href = '#/ThankYou';
       })
@@ -34,45 +36,45 @@ class App extends Component {
       })
   }
 
+  //get request func
   getFeedBack = () => {
-    console.log(`in getFeedback`);
+
     axios({
-      method:'GET',
+      method: 'GET',
       url: '/feedback'
     })
-    .then(response => {
-      console.log('Here is response from getFeedback:', response.data);
-      this.props.dispatch({ type: 'ADMIN_GET', payload: response.data });
+      .then(response => {
+        this.props.dispatch({ type: 'ADMIN_GET', payload: response.data });
 
 
-    })
-    .catch(error => {
-      alert(`Something went wrong when trying to get Feedback. Please try again later.`);
-      console.log(`This is the error after trying to getFeedback,`, error);
-      
-    })
+      })
+      .catch(error => {
+        alert(`Something went wrong when trying to get Feedback. Please try again later.`);
+        console.log(`This is the error after trying to getFeedback,`, error);
+
+      })
   }
 
+  //delete request function for the admin page; is passed as prop to admin page; takes the id that is passed from the button that fires it
   deleteFeedback = (id) => {
-    console.log(`in deleteFeedback with item Id,`, id);
     axios({
-      method:'DELETE',
+      method: 'DELETE',
       url: `/feedback/${id}`
     })
-    .then(response => {
-console.log(`Response after deleting feedback`, response);
-this.getFeedBack();
+      .then(response => {
+        console.log(`Response after deleting feedback`, response);
+        this.getFeedBack();
 
-    }) 
-    .catch(error => {
-      console.log(`Error deleting feedback:`, error);
-      
-    })
+      })
+      .catch(error => {
+        console.log(`Error deleting feedback:`, error);
+
+      })
   }
 
-componentDidMount() {
-  this.getFeedBack();
-}
+  componentDidMount() {
+    this.getFeedBack();
+  }
 
 
   render() {
@@ -84,9 +86,10 @@ componentDidMount() {
           <Route path='/understanding' component={Understanding} />
           <Route path='/supported' component={Supported} />
           <Route path='/comments' component={Comments} />
+          {/* These routes with the render attribute were thanks to Nina and Jarvis */}
           <Route path='/ReviewFeedback' render={(routeProps) => <ReviewFeedback {...routeProps} submitFeedback={this.submitFeedback} />} />
           <Route path='/ThankYou' component={ThankYou} />
-          <Route path='/Admin' render={(routeProps) => <Admin {...routeProps} delete={this.deleteFeedback}  />} />
+          <Route path='/Admin' render={(routeProps) => <Admin {...routeProps} delete={this.deleteFeedback} />} />
         </Router>
       </div>
     );

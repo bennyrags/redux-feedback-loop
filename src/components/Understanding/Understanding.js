@@ -97,6 +97,7 @@ class Understanding extends Component {
                         </Slide>
                     </Grid>
                 </Grid>
+
                 <ReviewFeedback />
 
             </section>

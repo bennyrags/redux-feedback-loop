@@ -55,7 +55,6 @@ class Supported extends Component {
     }
 
     handleClick = (e) => {
-        console.log(`this is state from  supported handleClick`, this.state);
         this.props.dispatch({ type: 'SUPPORTED', payload: this.state.supported });
         this.props.history.push(`/comments`);
     }
@@ -69,7 +68,6 @@ class Supported extends Component {
         this.setState({
             supported: e.target.value,
         })
-        console.log(`this is state from  supported handleChange`, this.state);
 
     }
     render() {
@@ -100,6 +98,7 @@ class Supported extends Component {
                         </Slide>
                     </Grid>
                 </Grid>
+
                 <ReviewFeedback />
             </section>
         )
